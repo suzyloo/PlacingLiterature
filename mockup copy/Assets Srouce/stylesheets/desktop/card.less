@@ -1,0 +1,160 @@
+//
+// Card
+// --------------------------------------------------
+
+#content {
+    padding: 35px 35px 75px;
+
+    #main {
+        width: 400px;
+        // padding: 20px;
+        z-index: 2;
+        position: relative;
+        background: #fff;
+        color: #333;
+        .box-shadow(0 1px 3px rgba(0,0,0,.2));
+        border: 1px solid;
+        border-color: #bbb #bbb #a8a8a8;
+
+        &.yellow {
+            background: #f9edbe;
+            border-color: #f0c36d;
+        }
+
+        h1:first-child, h2:first-child,
+        h3:first-child, h4:first-child {
+            margin-top: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* -----CARD STUFF----- */
+        .card-back {
+            display: none;
+        }
+
+        &.flipped {
+            .card-front {
+                display: none;
+            }
+            .card-back {
+                display: block;
+            }
+        }
+
+        /* -----ENTRY LAYOUT ELEMENTS----- */
+        .panoramio-widget {
+            height: 100px;
+            width: 100%;
+            position: relative;
+
+            .panoramio-image {
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                width: 100%;
+                z-index: 10;
+            }
+
+            .panoramio-tos {
+                z-index: 20;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #414141;
+                background: rgba(0,0,0,0.5);
+                color: #ededed;
+                font-size: 10px;
+                line-height: 12px;
+                padding: 5px 10px;
+
+                .panoramio-logo {
+                    display: inline-block;
+                    height: 12px;
+                    width: 65px;
+                    background: url(/assets/images/panoramio.png) no-repeat center center;
+                    vertical-align: bottom;
+                }
+
+                @media only screen and (-webkit-min-device-pixel-ratio: 2),
+                only screen and (min--moz-device-pixel-ratio: 2),
+                only screen and (-o-min-device-pixel-ratio: 2/1),
+                only screen and (min-device-pixel-ratio: 2),
+                only screen and (min-resolution: 2dppx) {
+                    .panoramio-logo {
+                        background-image: url(/assets/images/panoramio@2x.png);
+                        background-size: 65px 12px;
+                    }
+                }
+            }
+        }
+
+        .entry {
+            font-size: 12px;
+            padding: 20px;
+
+
+            .entry-title {
+                margin-bottom: 10px;
+                font-size: 22px;
+            }
+
+            .entry-body {
+                ol, ul {
+                    margin: 0 0 15px 15px;
+                    padding: 0;
+                    font-size: 12px;
+
+                    li {
+                        padding: 0;
+                        list-style-position: outside;
+                        line-height: 1.5em;
+                    }
+                }
+
+                p {
+                    margin: 0 0 15px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .nav-tabs {
+            background: #F5F5F5;
+            border-top: 1px solid #dddddd;
+
+            > li {
+
+                > a {
+                    padding: 8px 13px;
+                    color: #859CB2;
+                }
+
+                &.active > a,
+                &.active > a:hover,
+                &.active > a:focus {
+                    border: 1px solid #dddddd;
+                    border-top-color: #fff;
+                    border-radius: 0;
+                    margin-top: -1px;
+                    padding-top: 9px;
+                    border-bottom: transparent;
+                }
+
+                &.active:first-child > a {
+                    border-left-color: transparent;
+                }
+            }
+        }
+    }
+}

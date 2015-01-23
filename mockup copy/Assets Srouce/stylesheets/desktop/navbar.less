@@ -1,0 +1,82 @@
+//
+// Header Navbar
+// --------------------------------------------------
+
+#navbar {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    padding: 0 35px;
+    z-index: 1000;
+    -webkit-box-shadow: 0 0 3px rgba(34,34,34,.6);
+    box-shadow: 0 0 3px rgba(34,34,34,.6);
+    // background-color: #333;
+    // color: #fff;
+    // height: 60px;
+    border-radius: 0;
+
+    .navbar-brand {
+        width: 300px;
+        background: url(/assets/images/logo.png) no-repeat center right;
+        margin: 0 80px 0 0;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 2dppx) {
+        .navbar-brand {
+            background-image: url(/assets/images/logo@2x.png);
+            background-size: 300px 44px;
+        }
+    }
+
+    .navbar-form {
+        margin: 13px 0 0;
+
+        .form-control {
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            background-color: #5a5a5a;
+            border: none;
+            color: #ddd;
+
+            &:focus {
+                background-color: #b8b8b8;
+                color: #222;
+                .box-shadow(none);
+            }
+        }
+    }
+
+    .navbar-profile {
+        float: right;
+        margin: 15px 0 0 15px;
+        .btn {
+            margin-left: 10px;
+        }
+    }
+
+    .dropdown-menu {
+        background-color: #282828;
+        background-color: rgba(0, 0, 0, 0.8);
+        .box-shadow(0 2px 4px rgba(0,0,0,0.2));
+        border-radius: 0;
+        .transition(opacity .218s);
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.2);
+        .divider {
+            background-color: #000;
+        }
+        > li > a {
+            color: #fff;
+            &:hover,  &:focus {
+                color: #fff;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        }
+    }
+}
