@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <title>
+                        Placing Literature
+                    </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="application-name" content="Placing Literature"/>
+
+        <link type='text/css' rel='stylesheet' href='/stylesheets/main.css'/>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@placingliterature">
+        <meta name="twitter:title" content="Placing Literature">
+        <meta name="twitter:description" content="Placing Literature starting a revolution.">
+        <meta name="twitter:creator" content="@placingliterature">
+        <meta name="twitter:image:src" content="/images/preview_image.png">
+        <meta name="twitter:domain" content="placingliterature.com">
+
+        <meta name="google-signin-clientid" content="617273530506-001jummv8p5doitng2k7qi1igbtl84gt.apps.googleusercontent.com" />
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
+        <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction" />
+        <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+        <script src="/javascripts/jquery-058c82de8f2550376fda8462713c7d49.js"></script>
+    </head>
+
+    <body>
+        <!--header-->
+<nav id="navbar" class="navbar navbar-inverse">
+
+    <a href="/" id="logo" class="navbar-brand"></a>
+
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Explore <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </form>
+
+    <div class="navbar-profile">
+        <a  id='signinButton' href="#">Sign In</a>
+        <script>
+			//The "NEW" way, documentation:
+			//https://developers.google.com/api-client-library/javascript/features/authentication
+		
+			var clientId = '617273530506-001jummv8p5doitng2k7qi1igbtl84gt.apps.googleusercontent.com';
+			var apiKey = 'AIzaSyDoUdoSAkilkO38Sge7PH2_9CVcbArypVo';
+			var scopes = 'https://www.googleapis.com/auth/plus.login';
+			//gapi.client.setApiKey(apiKey);
+       $('#signinButton').click(function(e){
+			if(this.innerHTML == "Sign Out"){
+				console.log("signing out");
+				gapi.auth.signOut();
+				this.innerHTML = "Sign In";
+			}
+			else{
+				console.log("CheckAuth");
+				checkAuth();
+				checkAuth();
+
+			}
+	   
+		});
+
+		function handleClientLoad() {
+		  gapi.client.setApiKey(apiKey);
+		  window.setTimeout(checkAuth,1);
+		}
+
+		function checkAuth() {
+		  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+		}
+
+		function handleAuthResult(authResult) {
+		  var authorizeButton = document.getElementById('signinButton');
+		  if (authResult && !authResult.error) {
+			 document.getElementById('signinButton').innerHTML = "Sign Out";
+			makeApiCall();
+		  } else {
+			authorizeButton.onclick = handleAuthClick;
+		  }
+		}
+
+		function handleAuthClick(event) {
+		  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+		  return false;
+		}
+		
+		function makeApiCall() {
+		  gapi.client.load('plus', 'v1').then(function() {
+			var request = gapi.client.plus.people.get({
+				'userId': 'me'
+				  });
+			request.then(function(resp) {
+			  /*
+			  //Show the user picture
+			  var heading = document.createElement('h4');
+			  var image = document.createElement('img');
+			  image.src = resp.result.image.url;
+			  heading.appendChild(image);
+			  heading.appendChild(document.createTextNode(resp.result.displayName));
+			  document.getElementById('content').appendChild(heading);
+			    */
+			}, function(reason) {
+			  console.log('Error: ' + reason.result.error.message);
+			});
+		  });
+		}
+
+
+        </script>
+
+        <a class="btn btn-primary btn-sm" href="#">Sign up</a>
+    </div>
+
+</nav>
+<!--end header-->
+        <div id="map"></div>
+
+<div id="loading"></div>
+
+<!--contentContainer-->
+<div id="contentContainer">
+
+    <!--content-->
+    <div id="content">
+
+        <!--main-->
+        <div id="main" class="clearfix">
+
+            <div class="card-front">
+				<div class='col two-fifths-col full-port-col four-square-div'>
+                    <div class='entry-container'>
+    					<div class=" entry standard-entry left-entry standard-port-entry">
+    						<div class='standard-entry-header'>Author Spotlight</div>
+    						<img class='standard-entry-image' src='/images/bodyBlows.png'/>
+    						<div class='standard-entry-text standard-entry-intro-text'>RJ Julia Author Spotlight: </div>
+    						<div class='standard-entry-text'>Steven Simmons,</div>
+    						<div class='standard-entry-text standard-entry-text-italics'>Body Blows</div>
+    							
+    						
+    					</div>
+    					<div class=" entry standard-entry right-entry standard-port-entry">
+    						<div class='standard-entry-header'>Author Spotlight</div>
+    						<img class='standard-entry-image' src='/images/jan-1.png'/>
+    						<div class='standard-entry-text standard-entry-intro-text'>IndieReader Author Spotlight: </div>
+    						<div class='standard-entry-text'>Samantha Towle,</div>
+    						<div class='standard-entry-text standard-entry-text-italics'>The Mighty Storm</div>
+    							
+    						
+    					</div>
+                        <div class='port-clear'></div>
+    					<div class=" entry standard-entry left-entry standard-port-entry">
+    						<div class='standard-entry-header'>Collections</div>
+    						<img class='standard-entry-image' src="/images/july2014_marktwainhouse.png"/>
+    						<div class='standard-entry-text standard-entry-intro-text'>Placing Literature Collections: </div>
+    						<div class='standard-entry-text standard-entry-text-italics'>Mark Twain curated by the Mark Twain House and Museum</div>
+    						
+    							
+    						
+    					</div>
+    					<div class=" entry standard-entry right-entry standard-port-entry">
+    						<div class='standard-entry-header'>Featured Author</div>
+    						<img class='standard-entry-image' src='/images/hemingway.jpg'/>
+    						<div class='standard-entry-text standard-entry-intro-text'>Ernest Hemingway: </div>
+    						<div class='standard-entry-text standard-entry-text-italics'>A Farewell to Arms, For Whom the Bell Tolls, and more...</div>
+    					</div>
+                    </div>
+				</div>
+				<div class='col two-fifths-col full-port-col'>
+                    <div class='entry-container'>
+    					<div class=" entry long-entry">
+    						<div class='long-entry-header'>Recent Blog Posts</div>
+    						<div class='long-entry-title-text'>Indie Reader Author Spotlight: Samantha Towle</div>
+    						<div class='long-entry-text'>Sex, Drugs, Rock & Roll, and... Literature? Yes!</div>
+    						<div class='long-entry-text continue-reading'>(Click to Continue Reading....)</div>
+    					</div>
+    					
+    					<div class='entry long-entry'>
+    						<div class='long-entry-header'>Recent Podcasts</div>
+    						<div class='long-entry-podcast'>
+    							<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187336082&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false" scrolling="auto" frameborder="0"
+    							height="100px" allowtransparency="no" 
+    							></iframe>
+    						</div>
+    					</div>
+					</div>
+				</div>
+				<div class='col one-fifth-col full-port-col'>
+                    <div class='entry-container'>
+    					<div class='entry tall-entry'>
+    						<img class='tall-entry-logo' align='middle' src="/images/logo.png"/>
+    						<div class='tall-entry-text tall-bold-text'>Map scenes from novels and explore any place through its literature</div>
+    						<div class='tall-entry-text'>Click below to go to map view. You can find our other content at the bar on the bottom of your screen.</div>
+                            <div id='get-started-button' class='get-started-button'>GET STARTED</div>
+                            <div class='tall-entry-text tall-entry-text-center'>Places added to date:</div>
+                            <div id='num-places-added'>####</div>
+                            <div class='tall-entry-text tall-entry-text-center'>Most recent additions:<br>Platform 9 &frac34; -Harry Potter Series</div>
+                            
+                        </div>
+					</div>
+				</div>
+            </div>
+
+            <div class="card-back">
+
+                <div class="panoramio-widget">
+                    <a href="http://www.panoramio.com/photo/7592085" target="_blank" class="panoramio-image" style="background-image: url(http://static2.bareka.com/photos/medium/7592085.jpg);"></a>
+                    <div class="panoramio-tos">
+                        <a href="http://www.panoramio.com" target="_top" class="panoramio-logo"></a>
+                        Photos are copyrighted by their owners
+                    </div>
+                </div>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class="entry">
+
+                            <h2 class="entry-title">The Gilded Age by Mark Twain</h2>
+
+                            <div class="entry-body">
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane" id="book">
+                        <div class="entry">
+
+                            <h2 class="entry-title">BOOK</h2>
+
+                            <div class="entry-body">
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="place">
+                        <div class="entry">
+
+                            <h2 class="entry-title">PLACE</h2>
+
+                            <div class="entry-body">
+
+                                <p>will be from notes.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="actions">
+                        <div class="entry">
+
+                            <h2 class="entry-title">ACTIONS</h2>
+
+                            <div class="entry-body">
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#home" role="tab" data-toggle="tab">Scene</a></li>
+                    <!-- <li><a href="#book" role="tab" data-toggle="tab">Book</a></li> -->
+                    <li><a href="#place" role="tab" data-toggle="tab">Place</a></li>
+                    <li><a href="#actions" role="tab" data-toggle="tab">Actions</a></li>
+                </ul>
+
+            </div>
+			
+			<div class='card-back'>
+			</div>
+        </div>
+        <!--end main-->
+
+    </div>
+    <!--end content-->
+
+</div>
+<!--end contentContainer-->
+
+       <div id="footer">
+
+            <div class="pull-left">
+
+                <ul class="nav nav-pills">
+                    <li>
+                        <a id="featContent" href="#">
+                            <i class="fa fa-plus"></i> Featured Content
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="footer-social">
+                    <a class="socialicon rss" href="https://soundcloud.com/interviewingauthors"  title="RSS Feed" rel="nofollow" target="_blank"><i class="fa fa-rss-square"></i></a>
+                    <a class="socialicon facebook" href="https://www.facebook.com/PlacingLiterature"  title="Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                    <a class="socialicon twitter" href="https://twitter.com/placinglit" title="Twitter"  rel="nofollow" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                </div>
+
+                <div id="copyright">
+                    Placing Literature &copy; 2012-2015. All Rights Reserved.
+                </div>
+                
+
+            </div>
+
+            <div class="pull-right">
+				<div class="navContainer">
+	                
+	      		</div>
+	      		<div class="linkSurround">
+	      			<a class="navLink" href="about">About</a>
+	       		</div>
+	       		<div class="linkSurround">
+	       			<a class="navLink" target="_blank" href="https://placingliterature.wordpress.com/">Blog</a>
+	       		</div>
+	       		<div class="linkSurround">
+	       			<a class="navLink" href="podcasts">Podcasts</a>
+	       		</div>
+	       		<div class="linkSurround">
+	       			<a class="navLink" href="authorspotlight">Author Spotlight</a>
+	       		</div>
+	       		<div class="linkSurround">
+	       			<a class="navLink" href="collections">Collections</a>
+	       		</div>
+				<div class="linkSurround lastLink">
+					<a class="navLink" href="mailto:info@placingliterature.com">Contact</a>
+				</div>
+	       		<!--This section will be used to create a link to the contact page
+                <div class="linkSurround">
+                    <a class="navLink lastLink" href="contact.html">Contact Us</a>
+                </div>
+                -->
+	       		
+	       		
+            </div>
+
+        </div>
+        <!--end footer-->
+
+        <script src="/javascripts/bootstrap-22b40e869c2e1aefe250ab1ce75dcf3d.js"></script>
+        <script src="/javascripts/desktop-e5f94a0424064414a76cb8b8e52915f7.js"></script>
+        <script src="/javascripts/app.js"></script>
+        <script src="/map.js"></script>
+    </body>
+    
+    <script>
+    	var getStartedButton = document.getElementById('get-started-button');
+    	getStartedButton.onclick = hideFeaturedContent;
+    	
+    	function hideFeaturedContent(){
+    		
+			$( "#main" ).animate({
+			top: $(window).height(), // to force the window to minimize at the bottom corner
+    		left: -60,
+    		width: '10px',
+    		height: 0
+			}, 900, function() {
+				
+				var map = document.getElementById('map');
+				map.style.zIndex="10000";
+				featuredContent = document.getElementById('featContent');
+				featContent.onclick = returnFeaturedContent;
+			});
+    	}
+    	
+    	function returnFeaturedContent(){
+    		
+    		$( "#main" ).animate({
+            left:0
+            }, 900, function() {
+                var map = document.getElementById('map');
+                map.style.zIndex="1";
+               
+                console.log('New css');
+                $('.clearfix').css('overflow','');
+                $('.clearfix').css('top','0px');
+                $('.clearfix').css('left','0px');
+                $('.clearfix').css('width','100%');
+                $('.clearfix').css('height','');
+               
+            });
+    	}
+    	// z-index: 1
+    </script>
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
